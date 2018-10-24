@@ -9,6 +9,23 @@ html,body{
     width: 100%;
 }
 
+.navbar-brand{
+    display:none;
+}
+
+.menu-form{
+    display: none;
+
+}
+
+.nav-link{
+    text-transform: uppercase;
+}
+
+.menu-form input {
+    padding-left: 25px;
+}
+
 
 a:hover {
     text-decoration: none;
@@ -63,6 +80,7 @@ a:hover {
     width: 340px;
     position: absolute;
     height: 100%;
+    z-index: 9;
 }
 
 .sticky{
@@ -70,9 +88,7 @@ a:hover {
     top:0;
 }
 
-.inner-left{
 
-}
 
 .toggle-button-left{
     background: #3b8dbd;
@@ -83,6 +99,7 @@ a:hover {
     text-align: center;
     line-height: 3.6rem;
     display: none;
+    transition: all 1s;
 }
 .toggle-button-left i{
     font-weight: bold;
@@ -402,12 +419,16 @@ footer .-social.-footer{
 
 /* transforms */
 
-.move-left{
-    margin-right: 350px;
+#green-block{
     transition: all 1s;
 }
 
-.display-main{
+#main-block{
+    transition: all 0.5s;
+}
+
+#blue-block{
+    transition: all 1s;
 }
 
 .display-blue {
@@ -462,8 +483,11 @@ footer .-social.-footer{
         padding-left: 50px;
     }
     .inner-inner-left{
-        width: 0;
+        width: 0px;
+        opacity: 0;
+        height: 0;
         display: none;
+        transition: all 1s;
     }
 
     .toggle-button-left{
@@ -491,6 +515,78 @@ footer .-social.-footer{
     .col.-btn{
         order: -1;
     }
+
+    .menu-form, .navbar-brand {
+        display: block;
+    }
+
+    .navbar-toggle i {
+        color: white;
+        font-size: 2rem;
+    }
+
+    .navbar-expand-custom{
+        position: fixed;
+        top:0;  
+        width: 100%;
+        z-index: 99;
+        height: 59px;
+        padding-right: 20px;
+        padding-left: 20px;
+        margin: 0;
+        max-width: 100%;
+    }
+
+    .img-fluid{
+        margin-top: 59px;
+    }
+
+    .navbar-collapse.show {
+        background: inherit;
+        width: 100%;
+        margin-left: -20px;
+        padding-left: 15px;
+        padding-right:45px;
+        margin-right:-20px;
+
+    }
+    
+
+}
+
+@media (min-width: 720px){
+    .navbar-expand-custom {
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+      }
+      .navbar-expand-custom .navbar-nav {
+        -ms-flex-direction: row;
+        flex-direction: row;
+      }
+      .navbar-expand-custom .navbar-nav .dropdown-menu {
+        position: absolute;
+      }
+      .navbar-expand-custom .navbar-nav .nav-link {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+      }
+      .navbar-expand-custom > .container,
+      .navbar-expand-custom > .container-fluid {
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+      }
+      .navbar-expand-custom .navbar-collapse {
+        display: -ms-flexbox !important;
+        display: flex !important;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+      }
+      .navbar-expand-custom .navbar-toggler {
+        display: none;
+      }
+
 }
 
 
