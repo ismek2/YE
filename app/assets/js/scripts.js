@@ -5,62 +5,63 @@ $(function () {
         return false;
     });
 
+    // menu icon
     $(".navbar-toggle").click(function(){
         $(".navbar-toggle i").toggleClass("fa-bars fa-times");
     })
 
-    $(window).on('resize', function(){
-        if(window.innerWidth > 960){
-            $('.nav.-social.blue').css("background","");
-            $('.nav.-social.blue a').css("color","");
-        }else{
-            $('.nav.-social.blue').css("background","#f0f0f0");
-            $('.nav.-social.blue a').css("color","rgb(204, 204, 204)");
+    // auto hide menu
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+        if(window.innerWidth < 720) {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+             document.querySelector(".navbar-expand-custom").style.top = "0";
+             document.querySelector(".inner-right.sticky").classList.add("stickyoffset");
+             document.querySelector(".inner-left.sticky").classList.add("stickyoffset");
+            } else {
+                document.querySelector(".navbar-expand-custom").style.top = "-59px";
+                document.querySelector(".inner-right.sticky").classList.remove("stickyoffset");
+                document.querySelector(".inner-left.sticky").classList.remove("stickyoffset");
+        
+             }
+            prevScrollpos = currentScrollPos;
         }
-
-
-    })
+    }
 
     // yesil dugme click
-    var isGreenClicked = false;
     $("#green").click(function(event){
         event.preventDefault();
-        isGreenClicked ? isGreenClicked = false : isGreenClicked = true;
-        if(isGreenClicked){
-            $("html, body").animate({ scrollTop: 232 }, "slow");
-            $('#green-block').css("width","260px")
-            $('.middle-block').css("transform","translateX(-50px)");
-            $('#green i').toggleClass("fa-angle-double-left fa-angle-double-right");
-
+        var here = 0;
+        if(window.innerWidth > 719) {
+            here = 232
         }else{
-            $('#green-block').css("width","")
-            $('.middle-block').css("transform","");
-            $('#green i').toggleClass("fa-angle-double-left fa-angle-double-right");
+            here = 232-99;
         }
+        $("html, body").animate({ scrollTop: here }, "slow");
+        $('#green-block').toggleClass("wide260");
+        $('.middle-block').toggleClass("translate50");
+        $('#green i').toggleClass("fa-angle-double-left fa-angle-double-right");
     });
 
-    var isBlueClicked = false;
     $(".toggle-button-left").click(function(event){
         event.preventDefault();
-        isBlueClicked ? isBlueClicked = false : isBlueClicked = true;
-        if(isBlueClicked){
-            $("html, body").animate({ scrollTop: 232 }, "slow");
-            $('#blue-block').css("width","340px")
-            $('.toggle-button-left').css("width", "340px");
-            $('.inner-inner-left').css({"width": "340px", "opacity": "1", "height":"100%", "display":"block"});
-            $('.middle-block').css("transform","translateX(15px)");
-            $('#blue i').toggleClass("fa-angle-double-left fa-angle-double-right");
-            $('.nav.-social.blue').css("background","#f0f0f0");
-            $('.nav.-social.blue a').css("color","rgb(204, 204, 204)");
+        var here = 0;
+        if(window.innerWidth > 719) {
+            here = 232
         }else{
-            $('#blue-block').css("width","")
-            $('.toggle-button-left').css("width", "");
-            $('.inner-inner-left').css({"width": "", "opacity":"", "height":"", "display":""});
-            $('.middle-block').css("transform","");
-            $('.nav.-social.blue').css("background","");
-            $('.nav.-social.blue a').css("color","");
-            $('#blue i').toggleClass("fa-angle-double-left fa-angle-double-right");
+            here = 232-99;
         }
-        
+        setTimeout(() => {
+            $('.inner-inner-left').toggleClass("displayblock");
+        }, 1000);
+        $("html, body").animate({ scrollTop: here }, "slow");
+        $('#blue-block').toggleClass("wide340");
+        $('.toggle-button-left').toggleClass("wide340");
+        $('.inner-inner-left').toggleClass("inner-transform");
+        $('.middle-block').toggleClass("translate15");
+        $('#blue i').toggleClass("fa-angle-double-left fa-angle-double-right");
+        $('.nav.-social.blue').toggleClass("makewhite");
+        $('.nav.-social.blue a').toggleClass("makegray");  
     })
 })

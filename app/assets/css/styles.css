@@ -86,6 +86,11 @@ a:hover {
 .sticky{
     position: sticky;
     top:0;
+    transition: .3s top;
+}
+
+.stickyoffset{
+    top: 59px;
 }
 
 
@@ -286,9 +291,9 @@ a:hover :not(span) {
 /* sonraki-sayfa */
 .sonraki-sayfa {
     color: #3b8dbd;
-    position: absolute;
-    bottom: 40px;
-    right: 40px;
+    display: block;
+    text-align: right;
+    padding: 15px;
     font-size: 1.1rem;
     font-weight: 600;
 }
@@ -451,6 +456,43 @@ footer .-social.-footer{
     z-index: 5;
 }
 
+/* button events */
+.wide260{
+    width: 260px !important;
+}
+
+.wide340{
+    width: 340px !important;
+}
+
+.inner-transform{
+    width: 340px !important;
+    opacity: 1 !important;
+    height: 100% !important;
+
+}
+
+.displayblock{
+    display: block !important;
+}
+
+.translate50{
+    transform: translateX(-50px) !important;
+}
+
+.translate15{
+    transform: translateX(15px) !important;
+}
+
+.makewhite{
+    background:#f0f0f0 !important;
+}
+
+.makegray {
+    color: rgb(204, 204, 204) !important;
+}
+
+
 
 /* media-queries */
 
@@ -483,7 +525,7 @@ footer .-social.-footer{
         padding-left: 50px;
     }
     .inner-inner-left{
-        width: 0px;
+        width: 0;
         opacity: 0;
         height: 0;
         display: none;
@@ -535,6 +577,7 @@ footer .-social.-footer{
         padding-left: 20px;
         margin: 0;
         max-width: 100%;
+        transition: .3s top;
     }
 
     .img-fluid{
@@ -593,43 +636,78 @@ footer .-social.-footer{
 
 @media (max-width: 480px){
     .container{
-        max-width: calc(100%);
+        max-width: 100%;
         margin:0 !important;
-    }
-
-    .left-block{
-        order: 2;
-        width: 100%;
-        display: block;
-        position: static;
-    }
-
-    .right-block{
-        order: 3;
-        width: 100%;
-        position: static;
-    }
-
-    .middle-block {
-        order: 1;
-        padding: 0;
-        width: 100%;
-    }
-    .inner-inner-left{
-        width: 100%;
-        display: block;
-    }
-
-    .toggle-button-left{
-        display: none;
-    }
-
-    .-out-green{
-        display: none !important;
     }
 
     .middle{
         display: flex;
         flex-wrap: wrap;
+
     }
+
+    #main-block{
+        order:1;
+        width:100%;
+        position: static;
+        padding: 0;
+        
+    }
+        .main-inner-content{
+            display: block;
+            width: 100%;
+        }
+        .sonraki-sayfa{
+            position: static;
+            text-align: right;
+            display: block;
+            margin-bottom: 20px;
+            padding-right: 30px;
+        }
+          .card-img-top{
+              width: 600px;
+              height: 155px;
+          }
+            .fa.fa-camera-retro{
+                font-size: 7rem;
+            }
+    #blue-block{
+        order: 2;
+        width:100%;
+        position: static;
+    }
+        .inner-left{
+            position: static;
+            display: block;
+            width: 100%;
+        }
+            .toggle-button-left{
+                display: none;
+            }
+            .inner-inner-left{
+                display: block;
+                opacity: 1;
+                position: static;
+                width: 100%;
+                height: auto; 
+            }
+
+
+    #green-block{
+        order:3;
+        width:100%;
+        position: static;
+    }
+
+        .inner-right.sticky{
+            position: static;
+        }
+            #green{
+                display: none !important;
+            }
+
+
+
+
+
 }
